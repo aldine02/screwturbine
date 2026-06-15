@@ -1,6 +1,6 @@
-This is a personal archive of my undergraduate thesis on Archimedes screw turbine optimization - 2024
+This is an archive of my undergraduate thesis on Archimedes screw turbine optimization - 2024
 
-![](docs/archimedes-screw.gif)
+<img src="docs/20230906_174334.jpg" width="20%">
 
 ---
 
@@ -9,49 +9,26 @@ The increasing need for sustainable energy solutions makes microhydro systems, s
 
 ---
 
-## Summary of the study
+## Analysis
 
-### Step 1
-We collected the data by an experiment.
+### Statistical Analysis
 
-<img src="docs/20230906_174334.jpg" width="20%">
-
-
-We ended up with a data on different variance of head, flow rates, and screw type of the turbine.
-
-### Step 2
-We performed Analysis of Variance (ANOVA) to see which of the variables actually impacts it the most. We find that the screw type and the flow rate are the primary determinants. 
+The statistical analysis isolates the primary determinants of turbine efficiency. The ANOVA results demonstrate that flow rate and screw type are highly significant, while hydraulic head has negligible impact at this specific scale.
 
 ![](docs/Plot_Anova_FR.png)
 
-*Figure 1. Correlation between flow rate and efficiency*
+*Figure 2: Correlation between flow rate and mechanical efficiency.*
 <br><br>
 
 ![](docs/Plot_Anova_ST.png)
 
-*Figure 2. Correlation between screw types and efficiency*
+*Figure 3: Correlation between single vs. double screw configurations and efficiency.*
 <br><br>
 
-Head height doesn't really impact the efficiency that much, at least on this scale. Which is surprising for me, since this turbine is designed for low-head application, turns out head doesn't impact efficiency that much.
 
-![](docs/Plot_Anova_H.png)
-
-*Figure 3. Correlation between head and efficiency*
-
-### Step 3
-
-After knowing the variables' impact on the turbine efficiency, we then play god.
-
-![](docs/7vdwstivz2f21.png)
-
-Genetic Algorithms (GA) work by "evolving" the configuration until it reaches the optimal state, which, in this case, is maximizing efficiency. 
-
-We first make the initial population, with a random configuration, and then evaluate the efficiency for each one. The higher the efficiency, the higher the score we give. The high score wins and gets to reproduce, while the low score gets eliminated. We do this for hundreds of generations.
+### Evolutionary Optimization
+A Genetic Algorithm (GA) optimization was conducted to navigate search spaces and maximize mechanical efficiency based on the experimental data.
 
 ![](docs/Plot_GA.png)
 
-*Figure 4. Genetic Algorithm convergence*
-<br><br>
-
-The results converge around the 22nd generation. It identified the optimal configuration at a head of 0.95 m and a flow rate of 814.8 l/min with a double screw, resulting in a mechanical power of 99.35 W with an efficiency of 78.73%.
-
+*Figure 4: Genetic Algorithm convergence plot showing the optimal configuration variables across generations.*
